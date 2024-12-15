@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation - Museo Tech</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/printtickets.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <a href="{{ url_for('home') }}" class="logo">M U S E O Tech</a>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('exhibition') }}">Exhibitions</a></li>
+                    <li><a href="{{ url_for('event') }}">Events</a></li>
+                    <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <li><a href="{{ url_for('register') }}">Register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="ticket-container" id="ticket">
+        <div class="card p-4">
+            <h2>Visitor Information</h2>
+
+            <div class="row mb-3">
+                <div class="col-md-6"><strong>Visitor Name:</strong></div>
+                <div class="col-md-6">{{ visitor.visitor_name }}</div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6"><strong>Visit Date:</strong></div>
+                <div class="col-md-6">{{ visitor.visit_date }}</div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6"><strong>Visit Time:</strong></div>
+                <div class="col-md-6">{{ visitor.visit_time }}</div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6"><strong>Number of Tickets:</strong></div>
+                <div class="col-md-6">{{ visitor.num_tickets }}</div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6"><strong>Visitor Type:</strong></div>
+                <div class="col-md-6">{{ visitor.visitor_type }}</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6"><strong>Price :</strong></div>
+                <div class="col-md-6">₹ {{ visitor.price }}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Buttons for Printing and PDF Download -->
+    <div class="text-center mt-4">
+        <button onclick="printTicket()" class="btn btn-primary">Print Ticket</button>
+    </div>
+
+    <script>
+        function printTicket() {
+            // Create a new window for the print view
+            const printContents = document.getElementById("ticket").innerHTML;
+            const originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;  // Replace page content with ticket content
+            window.print();  // Open print dialog
+            document.body.innerHTML = originalContents;  // Restore original content
+        }
+    </script>
+
+</body>
+</html>

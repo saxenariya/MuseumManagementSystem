@@ -1,0 +1,32 @@
+body{
+    margin-top: auto;
+    padding: 0;
+    background-color: darkgrey;
+}
+.header {
+    text-align: center;
+    font-size: 40px;
+    margin-top: -45px;
+}
+.events {
+    text-align:initial ;
+    font-size: 30px;
+     font-style: italic;
+     background: fixed;
+}
+.img-right{
+    float: right;
+    margin-top: 20px;
+    width: 550px;
+    height: 350px;
+    border: 1px solid #ddd;
+    transform: translateY(-250px);
+    margin-right: 20px;
+}
+.arts-text{
+    font-style: italic;
+    max-width: 500px;
+    max-height: 450px;
+    overflow: hidden;
+    font-size: 30px;
+}

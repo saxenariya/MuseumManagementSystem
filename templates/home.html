@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Museum Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+
+<body>
+    <!-- Background Image -->
+    <div class="background">
+        <img src="{{ url_for('static', filename='images/home img.jpg') }}" alt="Museum Background">
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <h2 style="color: black;">Welcome to </h2>
+        <div class="museo">
+        <h1>Museo-Tech</h1>
+        </div>
+        <p style="color: black;"><b><u><i>Explore  the  wonders  of  art,  history,  and  culture .</i></u></b></p>
+        <button onclick="location.href='{{ url_for('plan_your_visit') }}'">Plan Your Visit</button>       
+        </main>
+<br><br><br><br><br><br><br><br><br><br><br>
+    <!-- Navigation Menu -->
+    <div class="content">
+        <nav>
+            <ul>
+                <li><h3><a href="{{url_for('exhibition')}}">Exhibitions</a></h3></li>
+                <li><h3><a href="{{url_for('event')}}">Events</a></h3></li>
+                <li><h3><a href="{{url_for('contact')}}">Contact Us</a></h3></li>
+                <li><h3><a href="{{url_for('login')}}">Login</a></h3></li>
+                <li><h3><a href="{{url_for('register')}}">Register</a></h3></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Museum Management System</p>
+    </footer>
+</body>
+
+</html>

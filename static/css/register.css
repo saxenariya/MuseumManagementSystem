@@ -1,0 +1,53 @@
+body {
+ margin: 0;
+ font-family: Arial, sans-serif;
+ background-image: url('../images/register img.jpg'); 
+ background-size: 70%;
+ background-position: center;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 100vh;
+ color: #fff;
+}
+.container {
+ background-color: rgba(0, 0, 0, 0.7); 
+ padding: 20px;
+ border-radius: 20px;
+ box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+ width: 400px;
+}
+h1 {
+ text-align: center;
+ margin-bottom: 20px;
+}
+h5{
+ text-align: center;
+ margin-bottom: 10px;
+}
+.form-group {
+ margin-bottom: 15px;
+}
+label {
+ display: block;
+ margin-bottom: 5px;
+}
+input {
+ width: 100%;
+ padding: 10px;
+ border: none;
+ border-radius: 5px;
+}
+button {
+ width: 100%;
+ padding: 10px;
+ background-color: #007BFF;
+ border: none;
+ border-radius: 5px;
+ color: #fff;
+ cursor: pointer;
+ font-size: 16px;
+}
+button:hover {
+ background-color: #0056b3;
+}S

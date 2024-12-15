@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Your Visit - Museo Tech</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tickets.css') }}">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <a href="{{ url_for('home') }}" class="logo">M U S E O Tech</a>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('exhibition') }}">Exhibitions</a></li>
+                    <li><a href="{{ url_for('event') }}">Events</a></li>
+                    <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <li><a href="{{ url_for('register') }}">Register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Plan Your Visit</h1>
+        <p>Book your tickets and explore the museum!</p>
+
+        <form class="ticket-form" method="POST" action="{{ url_for('plan_your_visit') }}">
+            <div class="form-group">
+                <label for="visitor_name">Visitor Name:</label>
+                <input type="text" id="visitor_name" name="visitor_name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="visit_date">Select Visit Date:</label>
+                <input type="date" id="visit_date" name="visit_date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="visit_time">Select Visit Time:</label>
+                <select id="visit_time" name="visit_time" required>
+                    <option value="10:00 AM">10:00 AM</option>
+                    <option value="12:00 PM">12:00 PM</option>
+                    <option value="2:00 PM">2:00 PM</option>
+                    <option value="4:00 PM">4:00 PM</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="num_tickets">Number of Tickets:</label>
+                <input type="number" id="num_tickets" name="num_tickets" min="1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="visitor_type">Visitor Type:</label>
+                <select id="visitor_type" name="visitor_type" required>
+                    <option value="adult">Adult</option>
+                    <option value="child">Child</option>
+                    <option value="senior">Senior</option>
+                </select>
+            </div>
+
+            <!-- Price Section -->
+            <div class="form-group">
+                <h2>Price: ₹<span id="price">0</span></h2>
+                <input type="hidden" id="hidden_price" name="price" value="0">
+            </div>
+
+            <button type="submit" class="btn">Book Tickets</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Museo Tech - All rights reserved</p>
+    </footer>
+
+    <script>
+        // Price calculation based on visitor type
+        const priceList = {
+            adult: 40,
+            child: 20,
+            senior: 30
+        };
+
+        // Function to update the price when the visitor type or number of tickets changes
+        function updatePrice() {
+            const visitorType = document.getElementById('visitor_type').value;
+            const numTickets = document.getElementById('num_tickets').value;
+
+            // Get price per ticket based on visitor type
+            let pricePerTicket = priceList[visitorType] || 0;
+            let totalPrice = pricePerTicket * numTickets;
+
+            // Display the total price
+            document.getElementById('price').textContent = totalPrice;
+
+            // Update the hidden input field with the calculated price
+            document.getElementById('hidden_price').value = totalPrice;
+        }
+
+        // Update price when visitor type changes
+        document.getElementById('visitor_type').addEventListener('change', updatePrice);
+
+        // Update price when the number of tickets changes
+        document.getElementById('num_tickets').addEventListener('input', updatePrice);
+
+        // Update price when the page loads
+        window.onload = updatePrice;
+
+        // Ensure the hidden price field is updated when the form is submitted
+        document.querySelector('.ticket-form').addEventListener('submit', function(event) {
+            // Double-check if price is updated before submitting
+            updatePrice();
+        });
+    </script>
+</body>
+</html>
+

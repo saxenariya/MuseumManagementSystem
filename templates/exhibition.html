@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exhibition Gallery</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/exhibition.css') }}">
+</head>
+<body>
+    <header>
+        <h1>MUSEO Tech Gallery</h1>
+        <p>Explore the art and artifacts on display in our latest exhibition.</p>
+    </header>
+
+    <section class="gallery">
+        <div class="gallery-item">
+            <img src="{{ url_for('static', filename='images/Ancient WHITE Elephant.jpg') }}" alt="Ancient WHITE Elephant structure">
+            <p>Ancient WHITE Elephant structure.</p>
+        </div>
+        <div class="gallery-item">
+            <img src="{{ url_for('static', filename='images/Cultural Property Exhibition.jpg') }}" alt="Cultural Property Exhibition">
+            <p>Cultural Property Exhibition</p>
+        </div>
+        <div class="gallery-item">
+            <img src="{{ url_for('static', filename='images/Abraham Lincoln.jpg') }}" alt="Abraham Lincoln">
+            <p>Abraham Lincoln</p>
+        </div>
+        <div class="gallery-item">
+            <img src="{{ url_for('static', filename='images/Command Module Apollo11.jpg') }}" alt="Apollo 11 Command Module">
+            <p>Command Module Apollo 11</p>
+        </div>
+        <div class="gallery-item">
+            <img src="{{ url_for('static', filename='images/Triceratops Horridus Marsh1889.jpg') }}" alt="Triceratops Horridus Marsh 1889">
+            <p>Triceratops horridus Marsh 1889</p>
+        </div>
+        <div class="gallery-item">
+            <img src="{{ url_for('static', filename='images/George Washington.jpg') }}" alt="George Washington">
+            <p>George Washington</p>
+        </div>
+        <div class="gallery-item">
+            <img src="{{ url_for('static', filename='images/IMG-20241205-WA0008.jpg') }}" alt="Lama Sangha Tenzin - Buddhist Monk Remains">
+            <p>Lama Sangha Tenzin (Buddhist monk's remains discovered in 1975 in Gue, India)</p>
+        </div>
+        <div class="gallery-item">
+            <img src="{{ url_for('static', filename='images/IMG-20241205-WA0006.jpg') }}" alt="MUSEO More Exhibition">
+            <p>MUSEO More Exhibition</p>
+        </div>
+    </section>
+</body>
+</html>

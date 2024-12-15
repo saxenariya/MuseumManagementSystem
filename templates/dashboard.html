@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome, {{ user.username }}!</h2>
+        
+        <!-- User Profile Section -->
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Your Profile Information</h5>
+                <p><strong>Email:</strong> {{ user.email }}</p>
+                
+            </div>
+        </div>
+        
+        <!-- Visitors Plan Section -->
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Your Planned Visits</h5>
+                {% if visitors %}
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Visiter Name</th>
+                                <th>Visit Date</th>
+                                <th>Visit Time</th>
+                                <th>Number of Tickets</th>
+                                <th>Visitor Type</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for visitor in visitors %}
+                                <tr>
+                                    <td>{{ visitor.visitor_name}}</td>
+                                    <td>{{ visitor.visit_date }}</td>
+                                    <td>{{ visitor.visit_time }}</td>
+                                    <td>{{ visitor.num_tickets }}</td>
+                                    <td>{{ visitor.visitor_type }}</td>
+                                    <td>₹{{ visitor.price }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p>You have no upcoming visits planned.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
